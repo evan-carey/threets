@@ -63,7 +63,7 @@
 
 	"use strict";
 	var InputHandler_1 = __webpack_require__(/*! ./InputHandler */ 2);
-	var MouseHandler_1 = __webpack_require__(/*! ./MouseHandler */ 4);
+	var MouseHandler_1 = __webpack_require__(/*! ./MouseHandler */ 3);
 	var Renderer = (function () {
 	    function Renderer(width, height) {
 	        var _this = this;
@@ -294,26 +294,13 @@
 
 /***/ },
 /* 3 */
-/*!****************************!*\
-  !*** ./app/src/Globals.ts ***!
-  \****************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	exports.DEG_TO_RADS = 3.141592654 / 180.0;
-	exports.PI_2 = Math.PI / 2;
-	exports.DEBUG_MODE = false;
-
-
-/***/ },
-/* 4 */
 /*!*********************************!*\
   !*** ./app/src/MouseHandler.ts ***!
   \*********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var Globals = __webpack_require__(/*! ./Globals */ 3);
+	var Globals = __webpack_require__(/*! ./Globals */ 4);
 	var MOUSE_SENSITIVITY = 0.002;
 	var MouseHandler = (function () {
 	    function MouseHandler(camera) {
@@ -401,6 +388,19 @@
 	    return MouseHandler;
 	}());
 	exports.MouseHandler = MouseHandler;
+
+
+/***/ },
+/* 4 */
+/*!****************************!*\
+  !*** ./app/src/Globals.ts ***!
+  \****************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.DEG_TO_RADS = 3.141592654 / 180.0;
+	exports.PI_2 = Math.PI / 2;
+	exports.DEBUG_MODE = false;
 
 
 /***/ }
