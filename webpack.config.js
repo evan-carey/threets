@@ -10,7 +10,11 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.ts$/, loader: 'ts-loader' },
-            { test: /\.css$/, loader: 'style!css' }
+            { test: /\.css$/, loader: 'style!css' },
+            { test: /\.(glsl|vs|fs|vert|frag)$/, loader: 'shader' }
         ]
+    },
+    glsl: {
+        chunkPath: __dirname + "/shaders"
     }
 }
