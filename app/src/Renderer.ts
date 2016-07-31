@@ -60,7 +60,7 @@ export class Renderer {
         this.scene = new THREE.Scene();
 
         // create camera
-        this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 100);
+        this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 
         // position camera
         // this.camera.position.set(this.camXPos, this.camYPos, this.camZPos);
@@ -85,8 +85,8 @@ export class Renderer {
          */
 
         // add plane
-        let planeGeometry = new THREE.PlaneGeometry(10, 10);
-        let planeMaterial = new THREE.MeshPhongMaterial({ color: 0x444444, specular: 0x888888, shininess: 20 });
+        let planeGeometry = new THREE.PlaneGeometry(100, 100);
+        let planeMaterial = new THREE.MeshPhongMaterial({ color: 0x444444, specular: 0xffffff, shininess: 5 });
 
         this.plane = new THREE.Mesh(planeGeometry, planeMaterial);
         this.plane.rotation.x = -Math.PI / 2;

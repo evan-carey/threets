@@ -18,6 +18,7 @@ export class MouseHandler {
 
         this._yaw = new THREE.Object3D();
         this._yaw.position.y = 2;
+        this._yaw.position.z = 4;
         this._yaw.add(this._pitch);
 
         this._pointerLockButton = document.getElementById("pointerLockButton");

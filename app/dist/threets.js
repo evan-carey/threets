@@ -101,14 +101,14 @@
 	        this.renderer.setPixelRatio(window.devicePixelRatio);
 	        document.body.appendChild(this.renderer.domElement);
 	        this.scene = new THREE.Scene();
-	        this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 100);
+	        this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 	        var pLight = new THREE.PointLight(0xffffff, .7);
 	        pLight.position.set(3, 10, 3);
 	        this.scene.add(pLight);
 	        var aLight = new THREE.AmbientLight(0xffffff, 0.1);
 	        this.scene.add(aLight);
-	        var planeGeometry = new THREE.PlaneGeometry(10, 10);
-	        var planeMaterial = new THREE.MeshPhongMaterial({ color: 0x444444, specular: 0x888888, shininess: 20 });
+	        var planeGeometry = new THREE.PlaneGeometry(100, 100);
+	        var planeMaterial = new THREE.MeshPhongMaterial({ color: 0x444444, specular: 0xffffff, shininess: 5 });
 	        this.plane = new THREE.Mesh(planeGeometry, planeMaterial);
 	        this.plane.rotation.x = -Math.PI / 2;
 	        this.scene.add(this.plane);
@@ -353,6 +353,7 @@
 	        this._pitch.add(this.camera);
 	        this._yaw = new THREE.Object3D();
 	        this._yaw.position.y = 2;
+	        this._yaw.position.z = 4;
 	        this._yaw.add(this._pitch);
 	        this._pointerLockButton = document.getElementById("pointerLockButton");
 	        var havePointerLock = "pointerLockElement" in document ||
