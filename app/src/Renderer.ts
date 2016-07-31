@@ -1,3 +1,4 @@
+import * as Globals from "./Globals";
 import { InputHandler } from "./InputHandler";
 import { MouseHandler } from "./MouseHandler";
 
@@ -130,7 +131,7 @@ export class Renderer {
     };
 
     update() {
-        // this.timer();
+        if (Globals.DEBUG_MODE) this.timer();
         this.cube.rotateY(0.01);
         this.inputHandler.update();
     }
