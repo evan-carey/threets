@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 import { InputHandler } from "./InputHandler";
 import { MouseHandler } from "./MouseHandler";
 

@@ -8,9 +8,15 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "sourceMap": true,
-        "watch": true
+        "moduleResolution": "node",
+        "noEmitHelpers": true
     },
+    "compileOnSave": false,
+    "include": [
+        "app/**/*"
+    ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "dist"
     ]
 }

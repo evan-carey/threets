@@ -339,7 +339,7 @@
 	            "webkitPointerLockElement" in document;
 	        if (havePointerLock) {
 	            var element = document.body;
-	            document.addEventListener('pointerlockchange', this.pointerLockChange, false);
+	            document.addEventListener("pointerlockchange", this.pointerLockChange, false);
 	            this._pointerLockButton.addEventListener("click", function (event) {
 	                _this._pointerLockButton.style.display = "none";
 	                document.body.requestPointerLock();

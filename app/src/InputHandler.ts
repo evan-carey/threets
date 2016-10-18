@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 import * as Globals from "./Globals";
 import { MouseHandler } from "./MouseHandler";
 

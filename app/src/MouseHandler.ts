@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 import * as Globals from "./Globals";
 
 const MOUSE_SENSITIVITY: number = 0.002;
@@ -29,10 +30,10 @@ export class MouseHandler {
 
         if (havePointerLock) {
             let element = document.body;
-            document.addEventListener('pointerlockchange', this.pointerLockChange, false);
+            document.addEventListener("pointerlockchange", this.pointerLockChange, false);
             this._pointerLockButton.addEventListener("click", (event) => {
                 this._pointerLockButton.style.display = "none";
-        document.body.requestPointerLock();
+                document.body.requestPointerLock();
                 // this.pointerLockChange(event);
             });
 
