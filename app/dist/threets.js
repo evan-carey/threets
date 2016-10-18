@@ -62,8 +62,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var InputHandler_1 = __webpack_require__(/*! ./InputHandler */ 2);
-	var MouseHandler_1 = __webpack_require__(/*! ./MouseHandler */ 3);
+	var Globals = __webpack_require__(/*! ./Globals */ 2);
+	var InputHandler_1 = __webpack_require__(/*! ./InputHandler */ 3);
+	var MouseHandler_1 = __webpack_require__(/*! ./MouseHandler */ 4);
 	var Renderer = (function () {
 	    function Renderer(width, height) {
 	        var _this = this;
@@ -100,14 +101,14 @@
 	        this.renderer.setPixelRatio(window.devicePixelRatio);
 	        document.body.appendChild(this.renderer.domElement);
 	        this.scene = new THREE.Scene();
-	        this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 100);
+	        this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 	        var pLight = new THREE.PointLight(0xffffff, .7);
 	        pLight.position.set(3, 10, 3);
 	        this.scene.add(pLight);
 	        var aLight = new THREE.AmbientLight(0xffffff, 0.1);
 	        this.scene.add(aLight);
-	        var planeGeometry = new THREE.PlaneGeometry(10, 10);
-	        var planeMaterial = new THREE.MeshPhongMaterial({ color: 0x444444, specular: 0x888888, shininess: 20 });
+	        var planeGeometry = new THREE.PlaneGeometry(100, 100);
+	        var planeMaterial = new THREE.MeshPhongMaterial({ color: 0x444444, specular: 0xffffff, shininess: 5 });
 	        this.plane = new THREE.Mesh(planeGeometry, planeMaterial);
 	        this.plane.rotation.x = -Math.PI / 2;
 	        this.scene.add(this.plane);
@@ -127,6 +128,8 @@
 	        this.startTime = Date.now();
 	    }
 	    Renderer.prototype.update = function () {
+	        if (Globals.DEBUG_MODE)
+	            this.timer();
 	        this.cube.rotateY(0.01);
 	        this.inputHandler.update();
 	    };
@@ -152,12 +155,26 @@
 
 /***/ },
 /* 2 */
-/*!*********************************!*\
-  !*** ./app/src/InputHandler.ts ***!
-  \*********************************/
+/*!****************************!*\
+  !*** ./app/src/Globals.ts ***!
+  \****************************/
 /***/ function(module, exports) {
 
 	"use strict";
+	exports.DEG_TO_RADS = 3.141592654 / 180.0;
+	exports.PI_2 = Math.PI / 2;
+	exports.DEBUG_MODE = false;
+
+
+/***/ },
+/* 3 */
+/*!*********************************!*\
+  !*** ./app/src/InputHandler.ts ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var Globals = __webpack_require__(/*! ./Globals */ 2);
 	var Key = {
 	    W: 87,
 	    S: 83,
@@ -167,7 +184,8 @@
 	    DOWN: 40,
 	    LEFT: 37,
 	    RIGHT: 39,
-	    SPACE: 32
+	    SPACE: 32,
+	    TICK: 192
 	};
 	var InputHandler = (function () {
 	    function InputHandler(camera, player) {
@@ -207,6 +225,9 @@
 	                case Key.RIGHT:
 	                case Key.D:
 	                    _this.moveRight = true;
+	                    break;
+	                case Key.TICK:
+	                    Globals.DEBUG_MODE = !Globals.DEBUG_MODE;
 	                    break;
 	            }
 	        };
@@ -293,14 +314,14 @@
 
 
 /***/ },
-/* 3 */
+/* 4 */
 /*!*********************************!*\
   !*** ./app/src/MouseHandler.ts ***!
   \*********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var Globals = __webpack_require__(/*! ./Globals */ 4);
+	var Globals = __webpack_require__(/*! ./Globals */ 2);
 	var MOUSE_SENSITIVITY = 0.002;
 	var MouseHandler = (function () {
 	    function MouseHandler(camera) {
@@ -332,6 +353,7 @@
 	        this._pitch.add(this.camera);
 	        this._yaw = new THREE.Object3D();
 	        this._yaw.position.y = 2;
+	        this._yaw.position.z = 4;
 	        this._yaw.add(this._pitch);
 	        this._pointerLockButton = document.getElementById("pointerLockButton");
 	        var havePointerLock = "pointerLockElement" in document ||
@@ -388,19 +410,6 @@
 	    return MouseHandler;
 	}());
 	exports.MouseHandler = MouseHandler;
-
-
-/***/ },
-/* 4 */
-/*!****************************!*\
-  !*** ./app/src/Globals.ts ***!
-  \****************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	exports.DEG_TO_RADS = 3.141592654 / 180.0;
-	exports.PI_2 = Math.PI / 2;
-	exports.DEBUG_MODE = false;
 
 
 /***/ }

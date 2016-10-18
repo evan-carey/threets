@@ -11,7 +11,8 @@ const Key = {
     DOWN: 40,
     LEFT: 37,
     RIGHT: 39,
-    SPACE: 32
+    SPACE: 32,
+    TICK: 192
 };
 
 export class InputHandler {
@@ -67,6 +68,11 @@ export class InputHandler {
             case Key.RIGHT:
             case Key.D:
                 this.moveRight = true;
+                break;
+
+            // Turn on debugging
+            case Key.TICK:
+                Globals.DEBUG_MODE = !Globals.DEBUG_MODE;
                 break;
         }
 
