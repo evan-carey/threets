@@ -72,7 +72,7 @@ export class InputHandler {
 
             // Turn on debugging
             case Key.TICK:
-                Globals.DEBUG_MODE = !Globals.DEBUG_MODE;
+                // Globals.DEBUG_MODE = !Globals.DEBUG_MODE;
                 break;
         }
 
